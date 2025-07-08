@@ -5,6 +5,7 @@ import { VenueCard } from "@/components/VenueCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Search, Filter, SlidersHorizontal } from "lucide-react";
 
 // Mock data for venues
@@ -120,6 +121,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Header */}
+      <div className="absolute top-4 right-4 z-20">
+        <ThemeToggle />
+      </div>
+
       {/* Hero Section */}
       <div 
         className="relative py-20 px-4"
