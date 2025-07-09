@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { ImageGallery } from "@/components/ImageGallery";
+import { WishlistButton } from "@/components/WishlistButton";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { 
@@ -71,40 +73,21 @@ export default function VenueDetails() {
       </div>
 
       <div className="container mx-auto px-4 py-6">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-6">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => navigate(-1)}
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </Button>
+          <WishlistButton venueId={id || "1"} size="lg" />
+        </div>
+
         {/* Image Gallery */}
-        <div className="relative mb-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 h-[400px]">
-            <div className="md:col-span-2 relative rounded-xl overflow-hidden">
-              <img 
-                src={venue.images[currentImageIndex]} 
-                alt={venue.name}
-                className="w-full h-full object-cover"
-              />
-              <Button
-                variant="secondary"
-                size="icon"
-                className="absolute top-4 right-4"
-                onClick={() => setIsLiked(!isLiked)}
-              >
-                <Heart className={cn("w-4 h-4", isLiked && "fill-red-500 text-red-500")} />
-              </Button>
-            </div>
-            <div className="hidden md:grid grid-rows-2 gap-2">
-              {venue.images.slice(1, 3).map((image, index) => (
-                <div 
-                  key={index} 
-                  className="rounded-xl overflow-hidden cursor-pointer"
-                  onClick={() => setCurrentImageIndex(index + 1)}
-                >
-                  <img 
-                    src={image} 
-                    alt={`${venue.name} ${index + 2}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="mb-8">
+          <ImageGallery images={venue.images} alt={venue.name} />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

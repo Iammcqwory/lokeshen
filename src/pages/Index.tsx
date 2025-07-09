@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { Search, Filter, SlidersHorizontal } from "lucide-react";
+import { useWishlist } from "@/hooks/useWishlist";
+import { Search, Filter, SlidersHorizontal, Heart } from "lucide-react";
 
 // Mock data for venues
 const mockVenues = [
@@ -74,6 +75,7 @@ const mockVenues = [
 
 const Index = () => {
   const navigate = useNavigate();
+  const { wishlist } = useWishlist();
   const [searchResults, setSearchResults] = useState(mockVenues);
   const [quickSearch, setQuickSearch] = useState("");
   const [showFilters, setShowFilters] = useState(false);
@@ -122,7 +124,22 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="absolute top-4 right-4 z-20">
+      <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => navigate("/wishlist")}
+          className="bg-background/80 hover:bg-background"
+        >
+          <div className="relative">
+            <Heart className="h-4 w-4" />
+            {wishlist.length > 0 && (
+              <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                {wishlist.length}
+              </span>
+            )}
+          </div>
+        </Button>
         <ThemeToggle />
       </div>
 

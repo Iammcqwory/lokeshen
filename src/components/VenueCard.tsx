@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Star, Users } from "lucide-react";
+import { WishlistButton } from "@/components/WishlistButton";
 
 interface VenueCardProps {
   id: string;
@@ -15,6 +16,7 @@ interface VenueCardProps {
 }
 
 export function VenueCard({
+  id,
   name,
   location,
   price,
@@ -36,11 +38,14 @@ export function VenueCard({
           alt={name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        <div className="absolute top-3 right-3">
+        <div className="absolute top-3 left-3">
           <Badge variant="secondary" className="bg-background/90 backdrop-blur-sm">
             <Star className="w-3 h-3 mr-1 fill-primary text-primary" />
             {rating}
           </Badge>
+        </div>
+        <div className="absolute top-3 right-3">
+          <WishlistButton venueId={id} />
         </div>
       </div>
       
