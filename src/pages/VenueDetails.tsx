@@ -18,43 +18,25 @@ import {
   Music,
   CalendarIcon,
   MessageCircle,
-  Heart
+  CheckCircle
 } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import { mockVenues } from "@/data/venues";
 
 export default function VenueDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [selectedDate, setSelectedDate] = useState<Date>();
-  const [isLiked, setIsLiked] = useState(false);
-
-  // Mock venue data - in real app this would come from API
-  const venue = {
-    id: id || "1",
-    name: "Enchanted Garden Villa",
-    location: "Karen, Nairobi",
-    price: 120000,
-    rating: 4.8,
-    reviews: 67,
-    capacity: 200,
-    images: [
-      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    ],
-    description: "A stunning villa surrounded by lush gardens, perfect for intimate weddings and elegant celebrations. Features beautiful outdoor spaces, modern amenities, and breathtaking views.",
-    amenities: [
-      { icon: Wifi, label: "Free WiFi" },
-      { icon: Car, label: "Parking Available" },
-      { icon: Utensils, label: "Catering Kitchen" },
-      { icon: Music, label: "Sound System" }
-    ],
-    eventTypes: ["Wedding", "Party", "Corporate", "Photoshoot"],
-    host: "Sarah Wanjiku"
-  };
-
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Find venue from mock data
+  const venue = mockVenues.find(v => v.id === id) || mockVenues[0];
+  
+  // Create display amenities with icons
+  const displayAmenities = venue.amenities?.map((amenity, index) => ({
+    icon: [Wifi, Car, Utensils, Music, CheckCircle][index % 5],
+    label: amenity
+  })) || [];
 
   return (
     <div className="min-h-screen bg-background">
@@ -87,7 +69,7 @@ export default function VenueDetails() {
 
         {/* Image Gallery */}
         <div className="mb-8">
-          <ImageGallery images={venue.images} alt={venue.name} />
+          <ImageGallery images={venue.images || [venue.image]} alt={venue.name} />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -100,7 +82,7 @@ export default function VenueDetails() {
                 <div className="flex items-center">
                   <Star className="w-4 h-4 mr-1 fill-primary text-primary" />
                   <span className="font-medium">{venue.rating}</span>
-                  <span className="ml-1">({venue.reviews} reviews)</span>
+                  <span className="ml-1">({venue.reviews || 0} reviews)</span>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="w-4 h-4 mr-1" />
@@ -116,7 +98,7 @@ export default function VenueDetails() {
             {/* Event Types */}
             <div className="flex flex-wrap gap-2">
               {venue.eventTypes.map((type) => (
-                <Badge key={type} variant="secondary">
+                <Badge key={type} variant="secondary" className="capitalize">
                   {type}
                 </Badge>
               ))}
@@ -134,7 +116,7 @@ export default function VenueDetails() {
             <div>
               <h2 className="text-xl font-semibold mb-3">What this place offers</h2>
               <div className="grid grid-cols-2 gap-3">
-                {venue.amenities.map((amenity, index) => (
+                {displayAmenities.map((amenity, index) => (
                   <div key={index} className="flex items-center">
                     <amenity.icon className="w-5 h-5 mr-3 text-muted-foreground" />
                     <span>{amenity.label}</span>
@@ -204,11 +186,11 @@ export default function VenueDetails() {
                   <div className="pt-4 border-t">
                     <div className="flex items-center">
                       <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-semibold">
-                        {venue.host.charAt(0)}
+                        V
                       </div>
                       <div className="ml-3">
-                        <p className="font-medium">Hosted by {venue.host}</p>
-                        <p className="text-sm text-muted-foreground">Superhost</p>
+                        <p className="font-medium">Venue Manager</p>
+                        <p className="text-sm text-muted-foreground">Professional Host</p>
                       </div>
                     </div>
                   </div>

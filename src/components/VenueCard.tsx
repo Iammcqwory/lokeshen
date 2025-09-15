@@ -3,17 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { MapPin, Star, Users } from "lucide-react";
 import { WishlistButton } from "@/components/WishlistButton";
 
-interface VenueCardProps {
-  id: string;
-  name: string;
-  location: string;
-  price: number;
-  rating: number;
-  capacity: number;
-  image: string;
-  eventTypes: string[];
-  onClick: () => void;
-}
+import { VenueCardProps } from "@/types/venue";
 
 export function VenueCard({
   id,
@@ -65,7 +55,7 @@ export function VenueCard({
           
           <div className="flex flex-wrap gap-1">
             {eventTypes.slice(0, 2).map((type) => (
-              <Badge key={type} variant="outline" className="text-xs">
+              <Badge key={type} variant="outline" className="text-xs capitalize">
                 {type}
               </Badge>
             ))}

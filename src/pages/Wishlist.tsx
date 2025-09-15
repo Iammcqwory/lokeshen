@@ -3,70 +3,7 @@ import { useWishlist } from "@/hooks/useWishlist";
 import { useNavigate } from "react-router-dom";
 import { Heart, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-// Mock venues data (in a real app, this would come from an API)
-const mockVenues = [
-  {
-    id: "1",
-    name: "Enchanted Garden Villa",
-    location: "Karen, Nairobi",
-    price: 120000,
-    rating: 4.8,
-    capacity: 200,
-    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    eventTypes: ["Wedding", "Party", "Corporate"]
-  },
-  {
-    id: "2",
-    name: "Rooftop Terrace Nairobi",
-    location: "Westlands, Nairobi",
-    price: 85000,
-    rating: 4.6,
-    capacity: 150,
-    image: "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    eventTypes: ["Party", "Photoshoot", "Corporate"]
-  },
-  {
-    id: "3",
-    name: "Rustic Barn Retreat",
-    location: "Kiambu County",
-    price: 75000,
-    rating: 4.7,
-    capacity: 180,
-    image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    eventTypes: ["Wedding", "Anniversary", "Birthday"]
-  },
-  {
-    id: "4",
-    name: "Modern Event Hall",
-    location: "Kilimani, Nairobi",
-    price: 95000,
-    rating: 4.5,
-    capacity: 300,
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    eventTypes: ["Corporate", "Wedding", "Party"]
-  },
-  {
-    id: "5",
-    name: "Lakeside Lodge",
-    location: "Naivasha",
-    price: 140000,
-    rating: 4.9,
-    capacity: 250,
-    image: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    eventTypes: ["Wedding", "Photoshoot", "Anniversary"]
-  },
-  {
-    id: "6",
-    name: "Urban Loft Space",
-    location: "CBD, Nairobi",
-    price: 65000,
-    rating: 4.4,
-    capacity: 100,
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    eventTypes: ["Party", "Corporate", "Photoshoot"]
-  }
-];
+import { mockVenues } from "@/data/venues";
 
 const Wishlist = () => {
   const navigate = useNavigate();

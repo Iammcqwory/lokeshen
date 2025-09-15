@@ -9,17 +9,10 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { CalendarIcon, MapPin, Search } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import { SearchFilters as SearchFiltersType } from "@/types/venue";
 
 interface SearchFiltersProps {
-  onSearch: (filters: SearchFilters) => void;
-}
-
-export interface SearchFilters {
-  location: string;
-  date: Date | undefined;
-  eventType: string;
-  priceRange: number[];
-  capacity: string;
+  onSearch: (filters: SearchFiltersType) => void;
 }
 
 export function SearchFilters({ onSearch }: SearchFiltersProps) {
