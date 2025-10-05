@@ -108,5 +108,329 @@ export const mockVenues: Venue[] = [
       "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     ],
     reviews: 72
+  },
+  {
+    id: "7",
+    name: "Coastal Paradise Resort",
+    location: "Mombasa County",
+    price: 180000,
+    rating: 4.9,
+    capacity: 350,
+    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "anniversary", "corporate"],
+    description: "Stunning beachfront venue with ocean views and tropical ambiance.",
+    amenities: ["Beach Access", "Ocean View", "Pool", "Catering", "Guest Rooms"],
+    images: [
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 245
+  },
+  {
+    id: "8",
+    name: "Highland View Lodge",
+    location: "Nakuru County",
+    price: 110000,
+    rating: 4.7,
+    capacity: 220,
+    image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "corporate", "photoshoot"],
+    description: "Scenic highland venue overlooking the Great Rift Valley.",
+    amenities: ["Valley Views", "Gardens", "Parking", "Catering Kitchen", "Outdoor Deck"],
+    images: [
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 132
+  },
+  {
+    id: "9",
+    name: "Kisumu Waterfront Hall",
+    location: "Kisumu County",
+    price: 90000,
+    rating: 4.5,
+    capacity: 280,
+    image: "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "party", "corporate"],
+    description: "Modern lakeside venue with stunning Lake Victoria views.",
+    amenities: ["Lake Views", "A/V Equipment", "Catering", "Boat Rides", "Parking"],
+    images: [
+      "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 98
+  },
+  {
+    id: "10",
+    name: "Eldoret Country Club",
+    location: "Uasin Gishu County",
+    price: 85000,
+    rating: 4.6,
+    capacity: 200,
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "corporate", "party"],
+    description: "Elegant country club setting with lush green surroundings.",
+    amenities: ["Golf Course", "Restaurant", "Bar", "Gardens", "Ample Parking"],
+    images: [
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 167
+  },
+  {
+    id: "11",
+    name: "Meru Riverside Gardens",
+    location: "Meru County",
+    price: 70000,
+    rating: 4.4,
+    capacity: 160,
+    image: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "birthday", "anniversary"],
+    description: "Tranquil riverside venue surrounded by natural beauty.",
+    amenities: ["River Views", "Gardens", "Outdoor Seating", "Parking", "Catering"],
+    images: [
+      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 85
+  },
+  {
+    id: "12",
+    name: "Thika Palm Gardens",
+    location: "Kiambu County",
+    price: 78000,
+    rating: 4.3,
+    capacity: 175,
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "party", "photoshoot"],
+    description: "Beautiful palm-lined gardens perfect for outdoor celebrations.",
+    amenities: ["Palm Gardens", "Gazebo", "Sound System", "Parking", "Kitchen"],
+    images: [
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 94
+  },
+  {
+    id: "13",
+    name: "Machakos Executive Lodge",
+    location: "Machakos County",
+    price: 92000,
+    rating: 4.6,
+    capacity: 240,
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["corporate", "wedding", "party"],
+    description: "Contemporary lodge with panoramic views of Machakos town.",
+    amenities: ["City Views", "Conference Rooms", "Restaurant", "Bar", "Security"],
+    images: [
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 118
+  },
+  {
+    id: "14",
+    name: "Nyeri Hill Resort",
+    location: "Nyeri County",
+    price: 105000,
+    rating: 4.8,
+    capacity: 190,
+    image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "corporate", "anniversary"],
+    description: "Mountain resort with breathtaking views of Mount Kenya.",
+    amenities: ["Mountain Views", "Gardens", "Guest Rooms", "Restaurant", "Spa"],
+    images: [
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 154
+  },
+  {
+    id: "15",
+    name: "Malindi Beach Club",
+    location: "Kilifi County",
+    price: 155000,
+    rating: 4.9,
+    capacity: 300,
+    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "party", "photoshoot"],
+    description: "Exclusive beach club with white sand and turquoise waters.",
+    amenities: ["Private Beach", "Pool", "Water Sports", "Catering", "Accommodation"],
+    images: [
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 201
+  },
+  {
+    id: "16",
+    name: "Kakamega Forest Retreat",
+    location: "Kakamega County",
+    price: 68000,
+    rating: 4.5,
+    capacity: 140,
+    image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "photoshoot", "party"],
+    description: "Unique rainforest setting with natural canopy and wildlife.",
+    amenities: ["Forest Views", "Nature Walks", "Outdoor Seating", "Catering", "Eco-Friendly"],
+    images: [
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 76
+  },
+  {
+    id: "17",
+    name: "Nanyuki Highlands Estate",
+    location: "Laikipia County",
+    price: 125000,
+    rating: 4.7,
+    capacity: 210,
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "corporate", "anniversary"],
+    description: "Luxury highland estate with equator line and mountain views.",
+    amenities: ["Equator Line", "Horse Riding", "Gardens", "Guest Cottages", "Restaurant"],
+    images: [
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 143
+  },
+  {
+    id: "18",
+    name: "Kitale Grand Hall",
+    location: "Trans Nzoia County",
+    price: 72000,
+    rating: 4.4,
+    capacity: 185,
+    image: "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "corporate", "birthday"],
+    description: "Spacious hall in the heart of Kenya's agricultural region.",
+    amenities: ["A/V Equipment", "Stage", "Parking", "Catering", "AC"],
+    images: [
+      "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 91
+  },
+  {
+    id: "19",
+    name: "Embu Valley Gardens",
+    location: "Embu County",
+    price: 76000,
+    rating: 4.5,
+    capacity: 165,
+    image: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "party", "photoshoot"],
+    description: "Scenic valley gardens with terraced landscapes.",
+    amenities: ["Terraced Gardens", "Water Features", "Gazebo", "Parking", "Catering"],
+    images: [
+      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 102
+  },
+  {
+    id: "20",
+    name: "Kericho Tea Estate Hall",
+    location: "Kericho County",
+    price: 88000,
+    rating: 4.6,
+    capacity: 195,
+    image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "corporate", "party"],
+    description: "Unique venue surrounded by rolling tea plantations.",
+    amenities: ["Tea Plantation Views", "Colonial Architecture", "Gardens", "Catering", "Tours"],
+    images: [
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 129
+  },
+  {
+    id: "21",
+    name: "Bungoma Cultural Center",
+    location: "Bungoma County",
+    price: 65000,
+    rating: 4.3,
+    capacity: 170,
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "party", "anniversary"],
+    description: "Traditional venue celebrating local culture and heritage.",
+    amenities: ["Cultural Displays", "Outdoor Space", "Stage", "Parking", "Local Cuisine"],
+    images: [
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 68
+  },
+  {
+    id: "22",
+    name: "Garissa Desert Oasis",
+    location: "Garissa County",
+    price: 82000,
+    rating: 4.4,
+    capacity: 155,
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "corporate", "party"],
+    description: "Unique desert venue with traditional and modern elements.",
+    amenities: ["AC", "Generator", "Catering", "Security", "Indoor/Outdoor Space"],
+    images: [
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 54
+  },
+  {
+    id: "23",
+    name: "Kajiado Maasai Lodge",
+    location: "Kajiado County",
+    price: 115000,
+    rating: 4.8,
+    capacity: 205,
+    image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "photoshoot", "corporate"],
+    description: "Authentic Maasai-themed lodge with savannah views.",
+    amenities: ["Wildlife Views", "Cultural Performances", "Bomas", "Catering", "Guest Rooms"],
+    images: [
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 178
+  },
+  {
+    id: "24",
+    name: "Kwale Coastal Gardens",
+    location: "Kwale County",
+    price: 98000,
+    rating: 4.6,
+    capacity: 180,
+    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    eventTypes: ["wedding", "anniversary", "party"],
+    description: "Tropical coastal gardens with ocean breeze.",
+    amenities: ["Tropical Gardens", "Ocean Breeze", "Catering", "Parking", "Photo Spots"],
+    images: [
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
+    reviews: 112
   }
 ];
