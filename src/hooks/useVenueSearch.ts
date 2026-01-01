@@ -1,13 +1,14 @@
 import { useState, useMemo } from "react";
-import { mockVenues } from "@/data/venues";
-import { Venue, SearchFilters } from "@/types/venue";
+import { useVenues, Venue } from "@/hooks/useVenues";
+import { SearchFilters } from "@/types/venue";
 
 export function useVenueSearch() {
+  const { data: venues = [], isLoading } = useVenues();
   const [searchFilters, setSearchFilters] = useState<Partial<SearchFilters>>({});
   const [quickSearchQuery, setQuickSearchQuery] = useState("");
 
   const filteredVenues = useMemo(() => {
-    let filtered = mockVenues;
+    let filtered = venues;
 
     // Apply quick search
     if (quickSearchQuery.trim()) {
@@ -26,18 +27,18 @@ export function useVenueSearch() {
     
     if (searchFilters.eventType) {
       filtered = filtered.filter(venue => 
-        venue.eventTypes.some(type => 
+        venue.event_types.some(type => 
           type.toLowerCase() === searchFilters.eventType!.toLowerCase()
         )
       );
     }
     
     if (searchFilters.priceRange?.[0]) {
-      filtered = filtered.filter(venue => venue.price <= searchFilters.priceRange![0]);
+      filtered = filtered.filter(venue => venue.price_per_day <= searchFilters.priceRange![0]);
     }
 
     return filtered;
-  }, [searchFilters, quickSearchQuery]);
+  }, [venues, searchFilters, quickSearchQuery]);
 
   const searchVenues = (filters: SearchFilters) => {
     setSearchFilters(filters);
@@ -54,6 +55,7 @@ export function useVenueSearch() {
 
   return {
     venues: filteredVenues,
+    isLoading,
     searchVenues,
     quickSearch,
     resetSearch,

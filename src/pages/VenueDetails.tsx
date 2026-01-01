@@ -5,8 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { ImageGallery } from "@/components/ImageGallery";
 import { WishlistButton } from "@/components/WishlistButton";
+import { BookingDialog } from "@/components/BookingDialog";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useVenue } from "@/hooks/useVenues";
+import { useAuth } from "@/contexts/AuthContext";
 import { 
   ArrowLeft, 
   MapPin, 
@@ -22,21 +26,65 @@ import {
 } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { mockVenues } from "@/data/venues";
 
 export default function VenueDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const { data: venue, isLoading, error } = useVenue(id);
   const [selectedDate, setSelectedDate] = useState<Date>();
+  const [showBookingDialog, setShowBookingDialog] = useState(false);
   
-  // Find venue from mock data
-  const venue = mockVenues.find(v => v.id === id) || mockVenues[0];
-  
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <div className="sticky top-0 bg-background/95 backdrop-blur-sm border-b z-10">
+          <div className="container mx-auto px-4 py-3">
+            <Button variant="ghost" onClick={() => navigate(-1)} className="mb-2">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to results
+            </Button>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 py-6">
+          <Skeleton className="h-96 w-full mb-8" />
+          <Skeleton className="h-8 w-1/3 mb-4" />
+          <Skeleton className="h-4 w-1/2 mb-2" />
+          <Skeleton className="h-4 w-2/3" />
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !venue) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Venue not found</h1>
+          <Button onClick={() => navigate("/")}>Go back home</Button>
+        </div>
+      </div>
+    );
+  }
+
   // Create display amenities with icons
   const displayAmenities = venue.amenities?.map((amenity, index) => ({
     icon: [Wifi, Car, Utensils, Music, CheckCircle][index % 5],
     label: amenity
   })) || [];
+
+  // Get placeholder images for gallery
+  const galleryImages = venue.images?.length > 0 
+    ? venue.images 
+    : [venue.image_url || "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"];
+
+  const handleBookNow = () => {
+    if (!user) {
+      navigate("/auth");
+      return;
+    }
+    setShowBookingDialog(true);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -64,12 +112,12 @@ export default function VenueDetails() {
           >
             <ArrowLeft className="h-5 w-5" />
           </Button>
-          <WishlistButton venueId={id || "1"} size="lg" />
+          <WishlistButton venueId={venue.id} size="lg" />
         </div>
 
         {/* Image Gallery */}
         <div className="mb-8">
-          <ImageGallery images={venue.images || [venue.image]} alt={venue.name} />
+          <ImageGallery images={galleryImages} alt={venue.name} />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -82,7 +130,7 @@ export default function VenueDetails() {
                 <div className="flex items-center">
                   <Star className="w-4 h-4 mr-1 fill-primary text-primary" />
                   <span className="font-medium">{venue.rating}</span>
-                  <span className="ml-1">({venue.reviews || 0} reviews)</span>
+                  <span className="ml-1">({venue.reviews_count || 0} reviews)</span>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="w-4 h-4 mr-1" />
@@ -97,7 +145,7 @@ export default function VenueDetails() {
 
             {/* Event Types */}
             <div className="flex flex-wrap gap-2">
-              {venue.eventTypes.map((type) => (
+              {venue.event_types.map((type) => (
                 <Badge key={type} variant="secondary" className="capitalize">
                   {type}
                 </Badge>
@@ -133,7 +181,7 @@ export default function VenueDetails() {
                 <div className="space-y-4">
                   <div className="flex items-baseline justify-between">
                     <span className="text-2xl font-bold">
-                      KSh {venue.price.toLocaleString()}
+                      KSh {venue.price_per_day.toLocaleString()}
                     </span>
                     <span className="text-muted-foreground">per day</span>
                   </div>
@@ -172,9 +220,10 @@ export default function VenueDetails() {
                     <Button 
                       className="w-full bg-gradient-to-r from-primary to-primary-glow hover:opacity-90"
                       size="lg"
+                      onClick={handleBookNow}
                       disabled={!selectedDate}
                     >
-                      Book Now
+                      {user ? "Book Now" : "Sign in to Book"}
                     </Button>
                     <Button variant="outline" className="w-full" size="lg">
                       <MessageCircle className="w-4 h-4 mr-2" />
@@ -186,11 +235,13 @@ export default function VenueDetails() {
                   <div className="pt-4 border-t">
                     <div className="flex items-center">
                       <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-semibold">
-                        V
+                        {venue.host_name?.charAt(0) || "V"}
                       </div>
                       <div className="ml-3">
-                        <p className="font-medium">Venue Manager</p>
-                        <p className="text-sm text-muted-foreground">Professional Host</p>
+                        <p className="font-medium">{venue.host_name || "Venue Manager"}</p>
+                        <p className="text-sm text-muted-foreground">
+                          Responds within {venue.host_response_time || "1 hour"}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -200,6 +251,16 @@ export default function VenueDetails() {
           </div>
         </div>
       </div>
+
+      {/* Booking Dialog */}
+      {venue && (
+        <BookingDialog
+          venue={venue}
+          open={showBookingDialog}
+          onOpenChange={setShowBookingDialog}
+          initialDate={selectedDate}
+        />
+      )}
     </div>
   );
 }

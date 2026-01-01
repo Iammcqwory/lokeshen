@@ -1,15 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { VenueCard } from "@/components/VenueCard";
-import { Venue } from "@/types/venue";
+import { Venue } from "@/hooks/useVenues";
 import { Filter } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface SearchResultsProps {
   venues: Venue[];
+  isLoading?: boolean;
   onVenueClick: (venueId: string) => void;
   onShowAll: () => void;
 }
 
-export function SearchResults({ venues, onVenueClick, onShowAll }: SearchResultsProps) {
+export function SearchResults({ venues, isLoading, onVenueClick, onShowAll }: SearchResultsProps) {
+  if (isLoading) {
+    return (
+      <div className="container mx-auto px-4 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <Skeleton key={i} className="h-80 w-full rounded-lg" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto px-4 pb-12">
       <div className="flex items-center justify-between mb-6">
@@ -26,7 +40,14 @@ export function SearchResults({ venues, onVenueClick, onShowAll }: SearchResults
         {venues.map((venue) => (
           <VenueCard
             key={venue.id}
-            {...venue}
+            id={venue.id}
+            name={venue.name}
+            location={venue.location}
+            price={venue.price_per_day}
+            rating={Number(venue.rating)}
+            capacity={venue.capacity}
+            image={venue.image_url || ""}
+            eventTypes={venue.event_types as any}
             onClick={() => onVenueClick(venue.id)}
           />
         ))}

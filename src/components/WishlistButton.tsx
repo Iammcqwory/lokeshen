@@ -1,6 +1,6 @@
 import { Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useWishlist } from "@/hooks/useWishlist";
+import { useWishlistDB } from "@/hooks/useWishlistDB";
 import { cn } from "@/lib/utils";
 
 interface WishlistButtonProps {
@@ -10,13 +10,13 @@ interface WishlistButtonProps {
 }
 
 export function WishlistButton({ venueId, className, size = "default" }: WishlistButtonProps) {
-  const { isInWishlist, toggleWishlist } = useWishlist();
+  const { isInWishlist, toggleWishlist } = useWishlistDB();
   const isWished = isInWishlist(venueId);
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    toggleWishlist(venueId);
+    await toggleWishlist(venueId);
   };
 
   return (
