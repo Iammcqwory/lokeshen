@@ -14,7 +14,181 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          created_at: string
+          event_date: string
+          event_type: string
+          guest_count: number | null
+          id: string
+          special_requests: string | null
+          status: Database["public"]["Enums"]["booking_status"]
+          total_price: number | null
+          updated_at: string
+          user_id: string
+          venue_id: string
+        }
+        Insert: {
+          created_at?: string
+          event_date: string
+          event_type: string
+          guest_count?: number | null
+          id?: string
+          special_requests?: string | null
+          status?: Database["public"]["Enums"]["booking_status"]
+          total_price?: number | null
+          updated_at?: string
+          user_id: string
+          venue_id: string
+        }
+        Update: {
+          created_at?: string
+          event_date?: string
+          event_type?: string
+          guest_count?: number | null
+          id?: string
+          special_requests?: string | null
+          status?: Database["public"]["Enums"]["booking_status"]
+          total_price?: number | null
+          updated_at?: string
+          user_id?: string
+          venue_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_venue_id_fkey"
+            columns: ["venue_id"]
+            isOneToOne: false
+            referencedRelation: "venues"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      venues: {
+        Row: {
+          amenities: string[] | null
+          capacity: number
+          county: string
+          created_at: string
+          description: string | null
+          event_types: string[] | null
+          host_image: string | null
+          host_name: string | null
+          host_response_time: string | null
+          id: string
+          image_url: string | null
+          images: string[] | null
+          is_featured: boolean | null
+          location: string
+          name: string
+          price_per_day: number
+          rating: number | null
+          reviews_count: number | null
+          updated_at: string
+        }
+        Insert: {
+          amenities?: string[] | null
+          capacity: number
+          county: string
+          created_at?: string
+          description?: string | null
+          event_types?: string[] | null
+          host_image?: string | null
+          host_name?: string | null
+          host_response_time?: string | null
+          id?: string
+          image_url?: string | null
+          images?: string[] | null
+          is_featured?: boolean | null
+          location: string
+          name: string
+          price_per_day: number
+          rating?: number | null
+          reviews_count?: number | null
+          updated_at?: string
+        }
+        Update: {
+          amenities?: string[] | null
+          capacity?: number
+          county?: string
+          created_at?: string
+          description?: string | null
+          event_types?: string[] | null
+          host_image?: string | null
+          host_name?: string | null
+          host_response_time?: string | null
+          id?: string
+          image_url?: string | null
+          images?: string[] | null
+          is_featured?: boolean | null
+          location?: string
+          name?: string
+          price_per_day?: number
+          rating?: number | null
+          reviews_count?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      wishlists: {
+        Row: {
+          created_at: string
+          id: string
+          user_id: string
+          venue_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          user_id: string
+          venue_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          user_id?: string
+          venue_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "wishlists_venue_id_fkey"
+            columns: ["venue_id"]
+            isOneToOne: false
+            referencedRelation: "venues"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +197,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      booking_status: "pending" | "confirmed" | "cancelled" | "completed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +324,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      booking_status: ["pending", "confirmed", "cancelled", "completed"],
+    },
   },
 } as const
