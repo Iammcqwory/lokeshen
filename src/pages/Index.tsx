@@ -11,7 +11,7 @@ import { SearchFilters as SearchFiltersType, EventType } from "@/types/venue";
 
 const Index = () => {
   const navigate = useNavigate();
-  const { venues, searchVenues, quickSearch, resetSearch } = useVenueSearch();
+  const { venues, isLoading, searchVenues, quickSearch, resetSearch } = useVenueSearch();
   const [showFilters, setShowFilters] = useState(false);
 
   const handleSearch = (filters: SearchFiltersType) => {
@@ -67,6 +67,7 @@ const Index = () => {
 
       <SearchResults 
         venues={venues}
+        isLoading={isLoading}
         onVenueClick={handleVenueClick}
         onShowAll={resetSearch}
       />
